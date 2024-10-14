@@ -1,0 +1,207 @@
+name: Autograding Tests
+on:
+  - push
+  - repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    timeout-minutes: 5 # cancel the workflow if it takes more than 5 minutes
+    runs-on: "ubuntu-22.04"
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: dependencies installation
+        run: |
+          sudo apt update -y
+          sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager -y
+          sudo apt install qemu-system-x86 gcc-multilib make
+          sudo apt install gcc gdb
+      - name: Running RB Tree Test
+        id: test_rb_tree
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: test_rb_tree
+          setup-command: chmod +x xv6-public/test.sh
+          command: |
+            cd xv6-public
+            ./test.sh test_rb_tree
+          timeout: 3
+          max-score: 10
+      - name: Running CPU Allocation Time Test
+        id: test_cpu_time_allocation
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: test_cpu_time_allocation
+          setup-command: chmod +x xv6-public/test.sh
+          command: |
+            cd xv6-public
+            ./test.sh test_cpu_time_allocation
+          timeout: 3
+          max-score: 10
+      - name: Running Different Priorities Test
+        id: test_different_priorities
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: test_different_priorities
+          setup-command: chmod +x xv6-public/test.sh
+          command: |
+            cd xv6-public
+            ./test.sh test_different_priorities
+          timeout: 3
+          max-score: 10
+      - name: Running Low Priority Starvation
+        id: test_low_priority_starvation
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: test_low_priority_starvation
+          setup-command: chmod +x xv6-public/test.sh
+          command: |
+            cd xv6-public
+            ./test.sh test_low_priority_starvation
+          timeout: 3
+          max-score: 10
+      - name: Running Process Insertion
+        id: test_process_insertion
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: test_process_insertion
+          setup-command: chmod +x xv6-public/test.sh
+          command: |
+            cd xv6-public
+            ./test.sh test_process_insertion
+          timeout: 3
+          max-score: 10
+      - name: Running Response Time Test
+        id: test_response_time
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: test_response_time
+          setup-command: chmod +x xv6-public/test.sh
+          command: |
+            cd xv6-public
+            ./test.sh test_response_time
+          timeout: 3
+          max-score: 10
+      - name: Running Round Robin Fairness Test
+        id: test_round_robin_fairness
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: test_round_robin_fairness
+          setup-command: chmod +x xv6-public/test.sh
+          command: |
+            cd xv6-public
+            ./test.sh test_round_robin_fairness
+          timeout: 3
+          max-score: 10
+      - name: Running Throughput Test
+        id: test_throughput
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: test_throughput
+          setup-command: chmod +x xv6-public/test.sh
+          command: |
+            cd xv6-public
+            ./test.sh test_throughput
+          timeout: 3
+          max-score: 10
+      - name: Running Tree Init Test
+        id: test_tree_init
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: test_tree_init
+          setup-command: chmod +x xv6-public/test.sh
+          command: |
+            cd xv6-public
+            ./test.sh test_tree_init
+          timeout: 3
+          max-score: 10
+      - name: Running Varying Load Times Test
+        id: test_varying_load_times
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: test_varying_load_times
+          setup-command: chmod +x xv6-public/test.sh
+          command: |
+            cd xv6-public
+            ./test.sh test_varying_load_times
+          timeout: 3
+          max-score: 10
+      - name: Running Weights Test
+        id: test_weights
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: test_weights
+          setup-command: chmod +x xv6-public/test.sh
+          command: |
+            cd xv6-public
+            ./test.sh test_weights
+          timeout: 3
+          max-score: 10
+      - name: Running Tree Values Test
+        id: test_tree_values
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: test_tree_values
+          setup-command: chmod +x xv6-public/test.sh
+          command: |
+            cd xv6-public
+            ./test.sh test_tree_values
+          timeout: 3
+          max-score: 10
+      - name: Running New Process Vruntime
+        id: test_new_process_vruntime
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: test_new_process_vruntime
+          setup-command: chmod +x xv6-public/test.sh
+          command: |
+            cd xv6-public
+            ./test.sh test_new_process_vruntime
+          timeout: 3
+          max-score: 10
+      - name: Running Wakeup Vruntime
+        id: test_wakeup_vruntime
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: test_wakeup_vruntime
+          setup-command: chmod +x xv6-public/test.sh
+          command: |
+            cd xv6-public
+            ./test.sh test_wakeup_vruntime
+          timeout: 3
+          max-score: 10
+      - name: Running All xv6 User Tests
+        id: test_xv6_user_tests
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: test_xv6_user_tests
+          setup-command: chmod +x xv6-public/test.sh
+          command: |
+            cd xv6-public
+            ./test.sh usertests
+          timeout: 5
+          max-score: 10
+      - name: Autograding Reporter
+        uses: classroom-resources/autograding-grading-reporter@v1
+        env:
+          TEST_RB_TREE_RESULTS: "${{steps.test_rb_tree.outputs.result}}"
+          TEST_CPU_TIME_ALLOCATION_RESULTS: "${{steps.test_cpu_time_allocation.outputs.result}}"
+          TEST_DIFFERENT_PRIORITIES_RESULTS: "${{steps.test_different_priorities.outputs.result}}"
+          TEST_LOW_PRIORITY_STARVATION_RESULTS: "${{steps.test_low_priority_starvation.outputs.result}}"
+          TEST_PROCESS_INSERTION_RESULTS: "${{steps.test_process_insertion.outputs.result}}"
+          TEST_RESPONSE_TIME_RESULTS: "${{steps.test_response_time.outputs.result}}"
+          TEST_ROUND_ROBIN_FAIRNESS_RESULTS: "${{steps.test_round_robin_fairness.outputs.result}}"
+          TEST_THROUGHPUT_RESULTS: "${{steps.test_throughput.outputs.result}}"
+          TEST_TREE_INIT_RESULTS: "${{steps.test_tree_init.outputs.result}}"
+          TEST_VARYING_LOAD_TIMES_RESULTS: "${{steps.test_varying_load_times.outputs.result}}"
+          TEST_WEIGHTS_RESULTS: "${{steps.test_weights.outputs.result}}"
+          TEST_TREE_VALUES_RESULTS: "${{steps.test_tree_values.outputs.result}}"
+          TEST_NEW_PROCESS_VRUNTIME_RESULTS: "${{steps.test_new_process_vruntime.outputs.result}}"
+          TEST_WAKEUP_VRUNTIME_RESULTS: "${{steps.test_wakeup_vruntime.outputs.result}}"
+          TEST_XV6_USER_TESTS_RESULTS: "${{steps.test_xv6_user_tests.outputs.result}}"
+        with:
+          runners: test_rb_tree,test_cpu_time_allocation,test_different_priorities,test_low_priority_starvation,test_process_insertion,test_response_time,test_round_robin_fairness,test_throughput,test_tree_init,test_varying_load_times,test_weights,test_tree_values,test_new_process_vruntime,test_wakeup_vruntime,test_xv6_user_tests
