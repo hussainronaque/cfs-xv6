@@ -138,7 +138,7 @@ CFS uses several formulas to determine how much CPU time a process gets. The key
    ```math
    weight = \frac{1024}{1.25^{nice}}
    ```
-   Here, the nice value ranges from `-20` to `19` (with 0 being default). In the reference text for this course, OSTEP (by Remzi), you can find a pre-calculated list of values for these weights. Tests will be performed on your script according to those values (i.e. the ones found in the book) and not the values from the formula above. So please make sure you are assigning weights according to the values given in the book.
+   Here, the nice value ranges from `-20` to `19` (with 0 being default).
 
 2. **Time Slice**:
    The time slice for a process is determined by the following formula:
