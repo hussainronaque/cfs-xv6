@@ -82,7 +82,7 @@ Run the following command to build and boot xv6:
 make qemu-nox
 ```
 
-If everything is set up correctly, xv6 will boot in the terminal. Use `C-a x` to quit the emulator.
+If everything is set up correctly, xv6 will boot in the terminal. Use `Ctrl-a x` to quit the emulator.
 
 Now you can build and run xv6 easily with `make qemu-nox`.
 
@@ -124,7 +124,7 @@ Now, in the `xv6-public` directory, run:
 make TOOLPREFIX=i386-elf- qemu-nox
 ```
 
-If everything is installed correctly, you should see xv6 boot up in the terminal. To exit the emulator, press `C-a x`.
+If everything is installed correctly, you should see xv6 boot up in the terminal. To exit the emulator, press `Ctrl-a x`.
 
 To simplify future builds, edit the `Makefile`:
 
