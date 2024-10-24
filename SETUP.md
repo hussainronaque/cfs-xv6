@@ -106,7 +106,7 @@ Once installed, test if `qemu` is working by running:
 qemu-system-x86_64 -nographic
 ```
 
-Press `C-a x` to quit the emulator.
+Press `Ctrl-a x` to quit the emulator.
 
 ### 2. Installing the `gcc` Toolchain
 
