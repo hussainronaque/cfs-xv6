@@ -107,6 +107,7 @@ extern int sys_gettreeinfo(void);
 extern int sys_getprocinfo(void);
 extern int sys_gettreenodes(void);
 extern int sys_treebalanced(void);
+extern int sys_setnice(void);
 
 static int (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
@@ -134,6 +135,7 @@ static int (*syscalls[])(void) = {
 [SYS_getprocinfo] sys_getprocinfo,
 [SYS_gettreenodes] sys_gettreenodes,
 [SYS_treebalanced] sys_treebalanced,
+[SYS_setnice] sys_setnice,
 };
 
 void

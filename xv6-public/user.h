@@ -42,6 +42,7 @@ int gettreeinfo(int *count, int *total_weight, int *period);
 int getprocinfo(int pid, struct proc_info *info);
 int gettreenodes(int max_nodes, struct rb_node_info *nodes);
 int treebalanced(void);
+int setnice(int pid, int nice_value);
 
 // ulib.c
 int stat(const char*, struct stat*);

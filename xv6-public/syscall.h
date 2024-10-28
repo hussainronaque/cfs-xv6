@@ -24,3 +24,4 @@
 #define SYS_gettreeinfo 23
 #define SYS_getprocinfo 24
 #define SYS_gettreenodes 25
+#define SYS_setnice 26
