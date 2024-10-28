@@ -187,7 +187,7 @@ int
 compute_weight(int nice_value)
 {
   if (nice_value < 0){
-    long double ans = power(1.25, -1*nice_value);
+    double ans = power(1.25, -1*nice_value);
     ans = 1/ans;
     return 1024 / ans;
   }
